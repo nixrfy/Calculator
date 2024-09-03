@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Zean Network</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f2f2f2;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .calculator {
+            background-color: #ff0000;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.1);
+        }
+        .display {
+            width: 100%;
+            height: 50px;
+            background-color: #ffcccc;
+            border: none;
+            border-radius: 5px;
+            text-align: right;
+            font-size: 24px;
+            margin-bottom: 10px;
+            padding-right: 10px;
+            box-sizing: border-box;
+            color: #333;
+        }
+        .button {
+            width: 60px;
+            height: 60px;
+            margin: 5px;
+            font-size: 24px;
+            background-color: #ff6666;
+            border: none;
+            border-radius: 5px;
+            color: white;
+            cursor: pointer;
+        }
+        .button:hover {
+            background-color: #ff3333;
+        }
+        .row {
+            display: flex;
+        }
+    </style>
+</head>
+<body>
+    <div class="calculator">
+        <input type="text" id="display" class="display" readonly>
+        <div class="row">
+            <button class="button" onclick="clearDisplay()">C</button>
+            <button class="button" onclick="appendToDisplay('(')">(</button>
+            <button class="button" onclick="appendToDisplay(')')">)</button>
+            <button class="button" onclick="appendToDisplay('/')">/</button>
+        </div>
+        <div class="row">
+            <button class="button" onclick="appendToDisplay('7')">7</button>
+            <button class="button" onclick="appendToDisplay('8')">8</button>
+            <button class="button" onclick="appendToDisplay('9')">9</button>
+            <button class="button" onclick="appendToDisplay('*')">*</button>
+        </div>
+        <div class="row">
+            <button class="button" onclick="appendToDisplay('4')">4</button>
+            <button class="button" onclick="appendToDisplay('5')">5</button>
+            <button class="button" onclick="appendToDisplay('6')">6</button>
+            <button class="button" onclick="appendToDisplay('-')">-</button>
+        </div>
+        <div class="row">
+            <button class="button" onclick="appendToDisplay('1')">1</button>
+            <button class="button" onclick="appendToDisplay('2')">2</button>
+            <button class="button" onclick="appendToDisplay('3')">3</button>
+            <button class="button" onclick="appendToDisplay('+')">+</button>
+        </div>
+        <div class="row">
+            <button class="button" onclick="appendToDisplay('0')">0</button>
+            <button class="button" onclick="appendToDisplay('.')">.</button>
+            <button class="button" onclick="calculateResult()">=</button>
+        </div>
+    </div>
+
+    <script>
+        function clearDisplay() {
+            document.getElementById('display').value = '';
+        }
+
+        function appendToDisplay(value) {
+            document.getElementById('display').value += value;
+        }
+
+        function calculateResult() {
+            try {
+                document.getElementById('display').value = eval(document.getElementById('display').value);
+            } catch (error) {
+                document.getElementById('display').value = 'Error';
+            }
+        }
+    </script>
+</body>
+</html>
